@@ -1,13 +1,14 @@
 package it.unisa.superir;
 
+import it.unisa.superir.data.Document;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.File;
+import java.util.Arrays;
 
 public class Main extends Application {
     @Override
@@ -23,16 +24,18 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
-        String d1 = "Ciao come stai";
-        String d2 = "Ciao, tutto bene";
+        Document document = new Document("marco.txt");
 
-        String[] vocabolario = new String[]{"Ciao", "come", "stai", "tutto", "bene"};
+        document.getTitleVocabulary().printSorted();
+        System.out.print("\n");
+        document.getBodyVocabulary().printSorted();
 
-        String query = "Ciao oggi bene, ciao";
+        System.out.print("\n");
+        System.out.println(Arrays.toString(document.getTitleValues()));
 
-        String[] queryVoc = new String[]{"Ciao", "oggi", "bene"};
+        System.out.print("\n");
+        System.out.println(Arrays.toString(document.getBodyValues()));
 
-        Map<String, Integer> doc = new HashMap<>();
 
         /*
 
