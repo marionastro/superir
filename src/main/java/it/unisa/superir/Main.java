@@ -1,13 +1,17 @@
 package it.unisa.superir;
 
-import it.unisa.superir.data.Document;
+import it.unisa.superir.algorithm.StandardIR;
+import it.unisa.superir.algorithm.TFIDF;
+import it.unisa.superir.math.CosineSimilarity;
+import it.unisa.superir.model.Document;
+import it.unisa.superir.model.Folder;
+import it.unisa.superir.model.Vocabulary;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.io.File;
 import java.util.Arrays;
 
 public class Main extends Application {
@@ -24,18 +28,63 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
 
+        Folder folder = new Folder();
+
         Document document = new Document("marco.txt");
+        Document document2 = new Document("marco2.txt");
 
-        document.getTitleVocabulary().printSorted();
-        System.out.print("\n");
-        document.getBodyVocabulary().printSorted();
+        folder.add(document);
+        folder.add(document2);
 
-        System.out.print("\n");
-        System.out.println(Arrays.toString(document.getTitleValues()));
+        Vocabulary tot = folder.getVocabulary();
 
-        System.out.print("\n");
-        System.out.println(Arrays.toString(document.getBodyValues()));
+        String q = "Francesco è nato il 3 di settembre";
 
+        TFIDF tfidf = new TFIDF(folder);
+        StandardIR standardIR = new StandardIR();
+
+        System.out.println(tot);
+
+        double[] tfidf_queryValues = tfidf.getValues(q, tot);
+        double[] tfidf_bodyDocumentValues = tfidf.getValues(document.getBody().getJoining(), tot);
+        double[] tfidf_bodyDocument2Values = tfidf.getValues(document2.getBody().getJoining(), tot);
+        double[] tfidf_titleDocumentValues = tfidf.getValues(document.getTitle().getJoining(), tot);
+        double[] tfidf_titleDocument2Values = tfidf.getValues(document2.getTitle().getJoining(), tot);
+
+        double[] std_queryValues = standardIR.getValues(q, tot);
+        double[] std_bodyDocumentValues = standardIR.getValues(document.getBody().getJoining(), tot);
+        double[] std_bodyDocument2Values = standardIR.getValues(document2.getBody().getJoining(), tot);
+        double[] std_titleDocumentValues = standardIR.getValues(document.getTitle().getJoining(), tot);
+        double[] std_titleDocument2Values = standardIR.getValues(document2.getTitle().getJoining(), tot);
+
+
+        /*
+            System.out.println(Arrays.toString(queryValues));
+            System.out.println(Arrays.toString(documentValues));
+            System.out.println(Arrays.toString(document2Values));
+         */
+
+        System.out.println("Similarità con TFIDF: ");
+
+        double tfidf_s1 = CosineSimilarity.compute(tfidf_queryValues, tfidf_titleDocumentValues) * 0.7d
+                + CosineSimilarity.compute(tfidf_queryValues, tfidf_bodyDocumentValues) * 0.3d;
+
+        double tfidf_s2 = CosineSimilarity.compute(tfidf_queryValues, tfidf_titleDocument2Values) * 0.7d
+                + CosineSimilarity.compute(tfidf_queryValues, tfidf_bodyDocument2Values) * 0.3d;
+
+        System.out.println("1: " + tfidf_s1);
+        System.out.println("2: " + tfidf_s2);
+
+        System.out.println("Similarità con STD: ");
+
+        double std_s1 = CosineSimilarity.compute(std_queryValues, std_titleDocumentValues) * 0.7d
+                + CosineSimilarity.compute(std_queryValues, std_bodyDocumentValues) * 0.3d;
+
+        double std_s2 = CosineSimilarity.compute(std_queryValues, std_titleDocument2Values) * 0.7d
+                + CosineSimilarity.compute(std_queryValues, std_bodyDocument2Values) * 0.3d;
+
+        System.out.println("1: " + std_s1);
+        System.out.println("2: " + std_s2);
 
         /*
 
