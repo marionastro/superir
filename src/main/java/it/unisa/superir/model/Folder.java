@@ -29,6 +29,14 @@ public class Folder {
         return false;
     }
 
+    public void filter(Vocabulary vocabulary) {
+        this.vocabulary = this.vocabulary.filter(vocabulary);
+    }
+
+    public void filter(StopWordsFile stopWordsFile) {
+        this.filter(stopWordsFile.getVocabulary());
+    }
+
     public Vocabulary getVocabulary() {
         return vocabulary;
     }

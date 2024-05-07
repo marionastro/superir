@@ -5,6 +5,7 @@ import it.unisa.superir.algorithm.TFIDF;
 import it.unisa.superir.math.CosineSimilarity;
 import it.unisa.superir.model.Document;
 import it.unisa.superir.model.Folder;
+import it.unisa.superir.model.StopWordsFile;
 import it.unisa.superir.model.Vocabulary;
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -33,17 +34,22 @@ public class Main extends Application {
         Document document = new Document("marco.txt");
         Document document2 = new Document("marco2.txt");
 
+        StopWordsFile stopWordsFile = new StopWordsFile("marco3.txt");
+
         folder.add(document);
         folder.add(document2);
+        folder.filter(stopWordsFile);
 
         Vocabulary tot = folder.getVocabulary();
+
+        System.out.println(tot);
 
         String q = "Francesco è nato il 3 di settembre";
 
         TFIDF tfidf = new TFIDF(folder);
         StandardIR standardIR = new StandardIR();
 
-        System.out.println(tot);
+        System.out.println("Query: " + q);
 
         double[] tfidf_queryValues = tfidf.getValues(q, tot);
         double[] tfidf_bodyDocumentValues = tfidf.getValues(document.getBody().getJoining(), tot);

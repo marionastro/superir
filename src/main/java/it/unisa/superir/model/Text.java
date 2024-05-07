@@ -1,6 +1,7 @@
 package it.unisa.superir.model;
 
 import java.util.Arrays;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -29,6 +30,10 @@ public class Text {
 
     public String getJoining() {
         return stream().collect(Collectors.joining());
+    }
+
+    public Map<String, Long> getOccurrences() {
+        return stream().collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
     }
 
     public String[] getContent() {

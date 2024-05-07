@@ -8,7 +8,10 @@ public class Vocabulary {
     private final List<String> tokens;
 
     public Vocabulary(Stream<String> stream) {
-        this.tokens = stream.distinct().collect(Collectors.toList());
+        this.tokens = stream
+                .map(String::toLowerCase)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public Vocabulary(Collection<String> strings) {
@@ -29,6 +32,12 @@ public class Vocabulary {
 
     public Vocabulary join(Vocabulary vocabulary) {
         return new Vocabulary(Stream.concat(stream(), vocabulary.stream()));
+    }
+
+    public Vocabulary filter(Vocabulary vocabulary) {
+        Stream<String> res = stream()
+                .filter(s -> vocabulary.stream().noneMatch(s::equals));
+        return new Vocabulary(res);
     }
 
     public String getToken(int index) {
