@@ -7,27 +7,24 @@ import it.unisa.superir.model.Document;
 import it.unisa.superir.model.Folder;
 import it.unisa.superir.model.StopWordsFile;
 import it.unisa.superir.model.Vocabulary;
+import it.unisa.superir.view.FolderSelectionView;
 import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-import java.util.Arrays;
+public class SuperIR extends Application {
+    private static SuperIR instance;
+    private Stage currentStage;
 
-public class Main extends Application {
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        VBox vBox = new VBox();
-        Text text = new Text("Hello World!");
+    public void start(Stage primaryStage) {
+        instance = this;
+        currentStage = primaryStage;
 
-        vBox.getChildren().add(text);
-        Scene scene = new Scene(vBox);
+        FolderSelectionView view = new FolderSelectionView();
+        view.show();
+    }
 
-        primaryStage.setWidth(600);
-        primaryStage.setHeight(400);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    private void test() throws Exception {
 
         Folder folder = new Folder();
 
@@ -134,5 +131,13 @@ public class Main extends Application {
 
         ----
         */
+    }
+
+    public static SuperIR getInstance() {
+        return instance;
+    }
+
+    public Stage getCurrentStage() {
+        return currentStage;
     }
 }
