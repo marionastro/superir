@@ -7,7 +7,7 @@ import java.net.URL;
 public class FolderSelectionView extends View {
     @Override
     public URL getFXML() {
-        return SuperIR.getInstance().getClass().getResource("views/folderselection.fxml");
+        return SuperIR.getInstance().getClass().getResource("/views/folderselection.fxml");
     }
 
     @Override
