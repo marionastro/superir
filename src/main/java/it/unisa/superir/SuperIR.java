@@ -7,6 +7,7 @@ import it.unisa.superir.model.Document;
 import it.unisa.superir.model.Folder;
 import it.unisa.superir.model.StopWordsFile;
 import it.unisa.superir.model.Vocabulary;
+import it.unisa.superir.view.DocView;
 import it.unisa.superir.view.FolderSelectionView;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -20,7 +21,7 @@ public class SuperIR extends Application {
         instance = this;
         currentStage = primaryStage;
 
-        FolderSelectionView view = new FolderSelectionView();
+        DocView view = new DocView();
         view.show();
     }
 
