@@ -10,9 +10,8 @@ import java.io.File;
 public class FolderLoaderService extends Service<Folder> {
     private final File folderFile;
 
-    // TODO se fosse null ?
-    public FolderLoaderService(String folderPath) {
-        this.folderFile = new File(folderPath);
+    public FolderLoaderService(File folderFile) {
+        this.folderFile = folderFile;
     }
 
     @Override
@@ -20,12 +19,12 @@ public class FolderLoaderService extends Service<Folder> {
         return new Task<Folder>() {
             @Override
             protected Folder call() throws Exception {
-                Folder folder = new Folder();
+                Folder folder = new Folder(folderFile.getName());
                 File[] files = folderFile.listFiles();
 
                 if (files != null) {
                     for (File file : files) {
-                        if (file.isFile()) {
+                        if (file.isFile() && file.getName().endsWith(".txt")) {
                             Document document = new Document(file);
                             folder.add(document);
                         }

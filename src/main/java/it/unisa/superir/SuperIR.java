@@ -7,7 +7,8 @@ import it.unisa.superir.model.Document;
 import it.unisa.superir.model.Folder;
 import it.unisa.superir.model.StopWordsFile;
 import it.unisa.superir.model.Vocabulary;
-import it.unisa.superir.view.DocView;
+import it.unisa.superir.service.FolderLoaderService;
+import it.unisa.superir.service.QueryExecutionService;
 import it.unisa.superir.view.FolderSelectionView;
 import javafx.application.Application;
 import javafx.stage.Stage;
@@ -15,19 +16,21 @@ import javafx.stage.Stage;
 public class SuperIR extends Application {
     private static SuperIR instance;
     private Stage currentStage;
+    private FolderLoaderService folderLoaderService;
+    private QueryExecutionService queryExecutionService;
 
     @Override
     public void start(Stage primaryStage) {
         instance = this;
         currentStage = primaryStage;
 
-        DocView view = new DocView();
+        FolderSelectionView view = new FolderSelectionView();
         view.show();
     }
 
     private void test() throws Exception {
 
-        Folder folder = new Folder();
+        Folder folder = new Folder("test");
 
         Document document = new Document("marco.txt");
         Document document2 = new Document("marco2.txt");
@@ -140,5 +143,21 @@ public class SuperIR extends Application {
 
     public Stage getCurrentStage() {
         return currentStage;
+    }
+
+    public FolderLoaderService getFolderLoaderService() {
+        return folderLoaderService;
+    }
+
+    public void setFolderLoaderService(FolderLoaderService folderLoaderService) {
+        this.folderLoaderService = folderLoaderService;
+    }
+
+    public QueryExecutionService getQueryExecutionService() {
+        return queryExecutionService;
+    }
+
+    public void setQueryExecutionService(QueryExecutionService queryExecutionService) {
+        this.queryExecutionService = queryExecutionService;
     }
 }

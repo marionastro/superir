@@ -4,10 +4,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Folder {
+    public final String name;
     private final Set<Document> documents;
     private Vocabulary vocabulary;
 
-    public Folder() {
+    public Folder(String name) {
+        this.name = name;
         this.documents = new HashSet<>();
         this.vocabulary = new Vocabulary();
     }
@@ -39,5 +41,9 @@ public class Folder {
 
     public Vocabulary getVocabulary() {
         return vocabulary;
+    }
+
+    public String getName() {
+        return name;
     }
 }
