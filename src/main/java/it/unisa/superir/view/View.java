@@ -16,11 +16,28 @@ public abstract class View {
     public void show() {
         try {
             Stage stage = SuperIR.getInstance().getCurrentStage();
-            Scene scene = new Scene(new FXMLLoader(getFXML()).load(), getWidth(), getHeight());
-            stage.setWidth(getWidth());
-            stage.setHeight(getHeight());
+
+            // Salva la dimensione e la posizione attuale della finestra
+            double width = stage.getWidth();
+            double height = stage.getHeight();
+            double x = stage.getX();
+            double y = stage.getY();
+
+            // Carica la nuova scena
+            Scene scene = new Scene(new FXMLLoader(getFXML()).load());
+
             stage.setTitle(getTitle());
             stage.setScene(scene);
+
+            // Ripristina la dimensione e la posizione della finestra
+            stage.setWidth(width);
+            stage.setHeight(height);
+            stage.setX(x);
+            stage.setY(y);
+
+            scene.getStylesheets().clear();
+            scene.getStylesheets().add(getClass().getResource("/styles/light.css").toExternalForm());
+
             stage.show();
         } catch (Exception e) {
             Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, e);
@@ -30,10 +47,6 @@ public abstract class View {
     }
 
     public abstract URL getFXML();
-
-    public abstract int getWidth();
-
-    public abstract int getHeight();
 
     public abstract String getTitle();
 }

@@ -1,0 +1,152 @@
+.scroll-pane {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.textButton {
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #DB3434;
+    -fx-underline: true;
+    -fx-padding: 0 0 0 0;
+    -fx-background-insets: 0 0 0 0;
+    -fx-cursor: hand;
+    -fx-font-size: 18;
+}
+
+.folderName {
+    -fx-fill: #DB3434;
+}
+
+.button,
+.button:selected,
+.combo-box {
+    -fx-effect: none;
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 10pt;
+    -fx-cursor: hand;
+    -fx-font-size: 18;
+}
+
+.text-field {
+    -fx-background-color: rgba(217, 217, 217, 0.5);
+    -fx-background-radius: 10pt;
+    -fx-font-size: 16;
+    -fx-padding: 30;
+}
+
+.documentsContainer,
+.documentsContainer:focused {
+    -fx-border-width: 0;
+    -fx-background-color: rgba(217, 217, 217, 0.5);
+    -fx-background-radius: 10pt;
+    -fx-background-insets: 0;
+    -fx-effect: none;
+}
+
+.documentPane {
+    -fx-background-color: rgba(217, 217, 217, 1);
+    -fx-background-radius: 30pt;
+}
+
+.scoreBackground {
+    -fx-pref-width: 100;
+    -fx-pref-height: 100;
+    -fx-min-height: 100;
+    -fx-max-height: 100;
+    -fx-min-width: 100;
+    -fx-max-width: 100;
+    -fx-background-radius: 50%;
+}
+
+.scoreBackground Text {
+    -fx-fill: #fff;
+}
+
+.scoreBackgroundGreen {
+    -fx-background-color: #2ecc71;
+}
+
+.scoreBackgroundOrange {
+    -fx-background-color: #f1c40f;
+}
+
+.scoreBackgroundYellow {
+    -fx-background-color: #f39c12;
+}
+
+.scoreBackgroundRed {
+    -fx-background-color: #e74c3c;
+}
+
+.queryField {
+    -fx-background-color: #D9D9D9;
+    -fx-background-radius: 10pt 0 0 10pt;
+}
+
+.queryExecuteButton {
+    -fx-effect: none;
+    -fx-text-fill: #FFF;
+    -fx-background-color: #DB3434;
+    -fx-background-radius: 0 10pt 10pt 0;
+    -fx-cursor: hand;
+}
+
+.advancedOptionsVbox,
+.advancedOptionsPane {
+    -fx-background-color: rgba(217, 217, 217, 0.25);
+}
+
+.advancedOptionsPane {
+    -fx-background-radius: 15;
+}
+
+.optionsPane {
+    -fx-effect: none;
+    -fx-border-width: 0;
+    -fx-background-color: trasparent;
+}
+
+.table-view {
+    -fx-border-color: transparent;
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header-background,
+.table-view .column-header-background .filler,
+.table-view .corner {
+    -fx-background-color: transparent;
+}
+
+.table-view .column-header {
+    -fx-background-color: #D9D9D9;
+    -fx-border-color: trasparent;
+}
+
+.table-row-cell:filled:selected:hover,
+.table-row-cell:filled:selected {
+    -fx-background-color: #DB3434;
+    -fx-cursor: hand;
+}
+
+.table-row-cell:filled:hover {
+    -fx-background-color: #f8d6d6;
+    -fx-cursor: hand;
+}
+
+.table-row-cell:filled:selected .table-cell {
+    -fx-text-fill: #FFF;
+}
+
+.addStopWordsButton {
+    -fx-font-size: 14;
+    -fx-background-radius: 0 0 10pt 10pt;
+}
+
+.slider .track {
+    -fx-background-color: #D9D9D9;
+}
+
+.slider .thumb {
+    -fx-background-color: #DB3434;
+    -fx-cursor: hand;
+}

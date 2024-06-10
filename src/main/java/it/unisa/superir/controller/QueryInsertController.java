@@ -10,6 +10,7 @@ import it.unisa.superir.view.FolderDocsView;
 import it.unisa.superir.view.FolderSelectionView;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -40,13 +41,15 @@ public class QueryInsertController implements Initializable {
         FolderLoaderService service = SuperIR.getInstance().getFolderLoaderService();
 
         if (service != null) {
-            if (!service.isRunning())
+            if (service.getState() != Worker.State.SUCCEEDED) {
                 service.restart();
-
-            service.setOnSucceeded(event -> setup(service.getValue()));
-            service.setOnFailed(event -> {
-                // TODO
-            });
+                service.setOnSucceeded(event -> setup(service.getValue()));
+                service.setOnFailed(event -> {
+                    // TODO
+                });
+            } else {
+                setup(service.getValue());
+            }
         }
     }
 
@@ -78,7 +81,7 @@ public class QueryInsertController implements Initializable {
                     queryField.getText(),
                     stopWordsFilesTable.getItems(),
                     irComboBox.getSelectionModel().getSelectedIndex() == 0 ? new StandardIR() : new TFIDF(folder),
-                    relevanceSlider.getValue() / 10
+                    relevanceSlider.getValue() / 100d
             );
 
             SuperIR.getInstance().setQueryExecutionService(service);

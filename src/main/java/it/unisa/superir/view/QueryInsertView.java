@@ -11,16 +11,6 @@ public class QueryInsertView extends View {
     }
 
     @Override
-    public int getWidth() {
-        return 1280;
-    }
-
-    @Override
-    public int getHeight() {
-        return 720;
-    }
-
-    @Override
     public String getTitle() {
         return "SuperIR";
     }

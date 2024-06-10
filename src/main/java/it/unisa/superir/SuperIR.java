@@ -18,11 +18,15 @@ public class SuperIR extends Application {
     private Stage currentStage;
     private FolderLoaderService folderLoaderService;
     private QueryExecutionService queryExecutionService;
+    private Document selectedDocument;
 
     @Override
     public void start(Stage primaryStage) {
         instance = this;
         currentStage = primaryStage;
+
+        currentStage.setWidth(1280);
+        currentStage.setHeight(720);
 
         FolderSelectionView view = new FolderSelectionView();
         view.show();
@@ -159,5 +163,13 @@ public class SuperIR extends Application {
 
     public void setQueryExecutionService(QueryExecutionService queryExecutionService) {
         this.queryExecutionService = queryExecutionService;
+    }
+
+    public Document getSelectedDocument() {
+        return selectedDocument;
+    }
+
+    public void setSelectedDocument(Document selectedDocument) {
+        this.selectedDocument = selectedDocument;
     }
 }

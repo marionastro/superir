@@ -1,10 +1,10 @@
-package it.unisa.superir.algorithm;
+package it.unisa.superir.model;
 
-public class ResultPair {
+public class Score implements Comparable<Score> {
     private final double titleScore;
     private final double bodyScore;
 
-    public ResultPair(double titleScore, double bodyScore) {
+    public Score(double titleScore, double bodyScore) {
         this.titleScore = titleScore;
         this.bodyScore = bodyScore;
     }
@@ -19,5 +19,10 @@ public class ResultPair {
 
     public double getTotalScore() {
         return titleScore + bodyScore;
+    }
+
+    @Override
+    public int compareTo(Score o) {
+        return Double.compare(this.getTotalScore(), o.getTotalScore());
     }
 }

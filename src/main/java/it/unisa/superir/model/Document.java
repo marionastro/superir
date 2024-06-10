@@ -50,6 +50,10 @@ public class Document {
         return vocabulary;
     }
 
+    public File getFile() {
+        return file;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

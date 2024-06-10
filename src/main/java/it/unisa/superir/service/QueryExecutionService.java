@@ -1,22 +1,15 @@
 package it.unisa.superir.service;
 
 import it.unisa.superir.algorithm.IRAlgorithm;
-import it.unisa.superir.algorithm.ResultPair;
 import it.unisa.superir.math.CosineSimilarity;
-import it.unisa.superir.model.Document;
-import it.unisa.superir.model.Folder;
-import it.unisa.superir.model.StopWordsFile;
-import it.unisa.superir.model.Vocabulary;
+import it.unisa.superir.model.*;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Service;
 import javafx.concurrent.Task;
 
 import java.io.File;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Observable;
 
-public class QueryExecutionService extends Service<Map<Document, ResultPair>> {
+public class QueryExecutionService extends Service<QueryExecution> {
     private final Folder folder;
     private final String query;
     private final ObservableList<File> stopWordsFiles;
@@ -32,11 +25,11 @@ public class QueryExecutionService extends Service<Map<Document, ResultPair>> {
     }
 
     @Override
-    protected Task<Map<Document, ResultPair>> createTask() {
-        return new Task<Map<Document, ResultPair>>() {
+    protected Task<QueryExecution> createTask() {
+        return new Task<QueryExecution>() {
             @Override
-            protected Map<Document, ResultPair> call() throws Exception {
-                HashMap<Document, ResultPair> results = new HashMap<>();
+            protected QueryExecution call() throws Exception {
+                QueryExecution queryExecution = new QueryExecution(folder, query, stopWordsFiles, algorithm, titleRilevance);
 
                 for (File file : stopWordsFiles) {
                     StopWordsFile stopWordsFile = new StopWordsFile(file);
@@ -50,15 +43,15 @@ public class QueryExecutionService extends Service<Map<Document, ResultPair>> {
                     double[] titleValues = algorithm.getValues(document.getTitle().getJoining(), vocabulary);
                     double[] bodyValues  = algorithm.getValues(document.getBody().getJoining(), vocabulary);
 
-                    ResultPair resultPair = new ResultPair(
+                    Score score = new Score(
                             CosineSimilarity.compute(queryValues, titleValues) * titleRilevance,
                             CosineSimilarity.compute(queryValues, bodyValues) * (1 - titleRilevance)
                     );
 
-                    results.put(document, resultPair);
+                    queryExecution.setScore(document, score);
                 }
 
-                return results;
+                return queryExecution;
             }
         };
     }
