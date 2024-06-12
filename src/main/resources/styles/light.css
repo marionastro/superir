@@ -247,3 +247,8 @@
 .progress-indicator {
     -fx-progress-color: #DB3434;
 }
+
+.web-view {
+    -fx-background-color: #fff;
+    -fx-background-radius: 10;
+}

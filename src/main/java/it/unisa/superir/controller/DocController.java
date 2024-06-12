@@ -10,10 +10,12 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.effect.BlendMode;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.web.WebView;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -23,11 +25,11 @@ import java.util.stream.Collectors;
 
 public class DocController implements Initializable, Statistical, Loader {
     @FXML private VBox statsRootPane;
-    @FXML private TextArea textArea;
     @FXML private TextField queryField;
     @FXML private Text fileName;
     @FXML private BorderPane contentPane;
     @FXML private VBox loadingPane;
+    @FXML private WebView webView;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,9 +56,14 @@ public class DocController implements Initializable, Statistical, Loader {
     private void setup(QueryExecutionService service, Document selectedDocument) {
         fileName.setText(selectedDocument.getFile().getName());
         queryField.setText(service.getValue().getQuery());
-        textArea.appendText(selectedDocument.getTitle().getJoining());
-        textArea.appendText("\n");
-        textArea.appendText(selectedDocument.getBody().getJoining());
+        String webViewContent = String.format(
+                "<h1><b>%s</b></h1><p>%s</p>",
+                selectedDocument.getTitle().getJoining(),
+                selectedDocument.getBody().getJoining()
+        );
+        webView.getEngine().loadContent(webViewContent, "text/html");
+        webView.getEngine().setUserStyleSheetLocation(getClass().getResource("/styles/web.css").toExternalForm());
+        webView.setBlendMode(BlendMode.DARKEN); // Trick to make background transparent
 
         setLoading(false);
         addStats(
@@ -77,8 +84,6 @@ public class DocController implements Initializable, Statistical, Loader {
                 .sorted((o1, o2) -> Long.compare(o2.getValue(), o1.getValue()))
                 .map(e -> e.getKey() + ": " + e.getValue())
                 .collect(Collectors.joining(", ")), true);
-
-        textArea.setScrollTop(Double.MAX_VALUE);
     }
 
     @FXML private void back(ActionEvent event) {

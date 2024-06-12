@@ -49,8 +49,8 @@ public class Folder {
         return new HashMap<String, Long>() {
             {
                 for (Document document : getDocuments()) {
-                    document.getTitle().getOccurrences().forEach((w, o) -> merge(w, 0L, (k, v) -> v + o));
-                    document.getBody().getOccurrences().forEach((w, o)  -> merge(w, 0L, (k, v) -> v + o));
+                    document.getTitle().getOccurrences().forEach((w, o) -> merge(w, 1L, (k, v) -> v + o));
+                    document.getBody().getOccurrences().forEach((w, o)  -> merge(w, 1L, (k, v) -> v + o));
                 }
 
             }

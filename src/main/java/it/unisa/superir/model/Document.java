@@ -64,8 +64,8 @@ public class Document {
     public Map<String, Long> getOccurrences() {
         return new HashMap<String, Long>() {
             {
-                getTitle().getOccurrences().forEach((w, o) -> merge(w, 0L, (k, v) -> v + o));
-                getBody().getOccurrences().forEach((w, o)  -> merge(w, 0L, (k, v) -> v + o));
+                getTitle().getOccurrences().forEach((w, o) -> merge(w, 1L, (k, v) -> v + o));
+                getBody().getOccurrences().forEach((w, o)  -> merge(w, 1L, (k, v) -> v + o));
             }
         };
     }
