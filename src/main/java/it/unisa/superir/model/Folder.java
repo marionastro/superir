@@ -1,6 +1,8 @@
 package it.unisa.superir.model;
 
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Folder {
@@ -37,6 +39,26 @@ public class Folder {
 
     public void filter(StopWordsFile stopWordsFile) {
         this.filter(stopWordsFile.getVocabulary());
+    }
+
+    public int getTotalWords() {
+        return getDocuments().stream().mapToInt(Document::getLength).sum();
+    }
+
+    public Map<String, Long> getOccurrences() {
+        return new HashMap<String, Long>() {
+            {
+                for (Document document : getDocuments()) {
+                    document.getTitle().getOccurrences().forEach((w, o) -> merge(w, 0L, (k, v) -> v + o));
+                    document.getBody().getOccurrences().forEach((w, o)  -> merge(w, 0L, (k, v) -> v + o));
+                }
+
+            }
+        };
+    }
+
+    public int getAverageDocumentsWords() {
+        return getTotalWords() / documents.size();
     }
 
     public Vocabulary getVocabulary() {

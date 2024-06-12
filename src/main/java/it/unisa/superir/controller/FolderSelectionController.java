@@ -20,7 +20,6 @@ public class FolderSelectionController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Handling drag and drop
         rootPane.setOnDragOver(event -> {
             if (event.getDragboard().hasFiles()) {
                 event.acceptTransferModes(TransferMode.ANY);
@@ -36,7 +35,6 @@ public class FolderSelectionController implements Initializable {
             }
         });
 
-        // Handling manual search
         selectFromComputerButton.setOnAction(event -> {
             DirectoryChooser directoryChooser = new DirectoryChooser();
             directoryChooser.setTitle("Seleziona la cartella");

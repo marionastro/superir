@@ -54,6 +54,6 @@ public class Vocabulary {
 
     @Override
     public String toString() {
-        return tokens.toString();
+        return String.join(", ", tokens);
     }
 }

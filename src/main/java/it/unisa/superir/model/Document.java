@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -25,7 +27,7 @@ public class Document {
             this.title = new Text(t);
             this.body  = new Text(b);
 
-            Stream<String> concatStream = Stream.concat(
+            Stream<String> concatStream = Stream.concat (
                     Arrays.stream(t.split("[^A-zÀ-ú0-9]+")),
                     Arrays.stream(b.split("[^A-zÀ-ú0-9]+"))
             );
@@ -52,6 +54,20 @@ public class Document {
 
     public File getFile() {
         return file;
+    }
+
+    public int getLength() {
+        return getTitle().getJoining().split(" ").length +
+               getBody().getJoining().split(" ").length;
+    }
+
+    public Map<String, Long> getOccurrences() {
+        return new HashMap<String, Long>() {
+            {
+                getTitle().getOccurrences().forEach((w, o) -> merge(w, 0L, (k, v) -> v + o));
+                getBody().getOccurrences().forEach((w, o)  -> merge(w, 0L, (k, v) -> v + o));
+            }
+        };
     }
 
     @Override

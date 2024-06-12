@@ -35,6 +35,7 @@ public abstract class View {
             stage.setX(x);
             stage.setY(y);
 
+            // CSS
             scene.getStylesheets().clear();
             scene.getStylesheets().add(getClass().getResource("/styles/light.css").toExternalForm());
 

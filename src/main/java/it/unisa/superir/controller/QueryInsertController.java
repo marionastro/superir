@@ -8,6 +8,7 @@ import it.unisa.superir.service.FolderLoaderService;
 import it.unisa.superir.service.QueryExecutionService;
 import it.unisa.superir.view.FolderDocsView;
 import it.unisa.superir.view.FolderSelectionView;
+import javafx.application.Platform;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.StringBinding;
 import javafx.concurrent.Worker;
@@ -17,17 +18,25 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class QueryInsertController implements Initializable {
+public class QueryInsertController implements Initializable, Loader {
     @FXML public Slider relevanceSlider;
     @FXML public Text titleRelevance;
     @FXML public Text bodyRelevance;
+    @FXML private BorderPane contentPane;
+    @FXML private ProgressIndicator progressIndicator;
+    @FXML private VBox loadingPane;
     @FXML private TextField queryField;
     @FXML private Button executeButton;
     @FXML private TableColumn<File, String> stopWordsFileColumn;
@@ -40,12 +49,16 @@ public class QueryInsertController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         FolderLoaderService service = SuperIR.getInstance().getFolderLoaderService();
 
+        setLoading(true);
+
         if (service != null) {
             if (service.getState() != Worker.State.SUCCEEDED) {
                 service.restart();
                 service.setOnSucceeded(event -> setup(service.getValue()));
                 service.setOnFailed(event -> {
-                    // TODO
+                    Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, service.getException());
+                    Alert alert = new Alert(Alert.AlertType.ERROR, service.getException().getMessage(), ButtonType.CLOSE);
+                    alert.showAndWait().ifPresent(c -> Platform.exit());
                 });
             } else {
                 setup(service.getValue());
@@ -55,6 +68,9 @@ public class QueryInsertController implements Initializable {
 
     private void setup(Folder folder) {
         folderName.setText(folder.getName());
+
+        setLoading(false);
+
         irComboBox.getItems().add("Standard");
         irComboBox.getItems().add("TF-IDF");
         irComboBox.getSelectionModel().select(0);
@@ -81,12 +97,22 @@ public class QueryInsertController implements Initializable {
                     queryField.getText(),
                     stopWordsFilesTable.getItems(),
                     irComboBox.getSelectionModel().getSelectedIndex() == 0 ? new StandardIR() : new TFIDF(folder),
-                    relevanceSlider.getValue() / 100d
+                    relevanceSlider.getValue()
             );
 
             SuperIR.getInstance().setQueryExecutionService(service);
             new FolderDocsView().show();
         });
+
+        ContextMenu contextMenu = new ContextMenu();
+        MenuItem deleteMenuItem = new MenuItem("Cancella");
+        deleteMenuItem.setOnAction(e -> {
+            File selected = stopWordsFilesTable.getSelectionModel().getSelectedItem();
+            stopWordsFilesTable.getItems().remove(selected);
+        });
+        stopWordsFilesTable.setEditable(true);
+        contextMenu.getItems().add(deleteMenuItem);
+        stopWordsFilesTable.setContextMenu(contextMenu);
     }
 
     @FXML private void toggleAdvancedOptions(ActionEvent event) {
@@ -99,7 +125,7 @@ public class QueryInsertController implements Initializable {
 
     @FXML private void addStopWordsFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Seleziona il file contenenti le Stop Words.");
+        fileChooser.setTitle("Seleziona il file con le Stop Words.");
         FileChooser.ExtensionFilter extFilter =
                 new FileChooser.ExtensionFilter("TXT Files (*.txt)", "*.txt");
         fileChooser.getExtensionFilters().add(extFilter);
@@ -109,5 +135,15 @@ public class QueryInsertController implements Initializable {
             if (!stopWordsFilesTable.getItems().contains(file))
                 stopWordsFilesTable.getItems().add(file);
         }
+    }
+
+    @Override
+    public Pane getLoadingPane() {
+        return loadingPane;
+    }
+
+    @Override
+    public Pane getContentPane() {
+        return contentPane;
     }
 }

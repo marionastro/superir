@@ -24,10 +24,6 @@ public class Text {
         return stream().anyMatch(s -> s.equalsIgnoreCase(string));
     }
 
-    public long countIgnoreCase(String string) {
-        return stream().filter(s -> s.equalsIgnoreCase(string)).count();
-    }
-
     public String getJoining() {
         return stream().collect(Collectors.joining());
     }

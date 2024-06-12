@@ -14,14 +14,14 @@ public class QueryExecutionService extends Service<QueryExecution> {
     private final String query;
     private final ObservableList<File> stopWordsFiles;
     private final IRAlgorithm algorithm;
-    private final double titleRilevance;
+    private final double titleRelevance;
 
-    public QueryExecutionService(Folder folder, String query, ObservableList<File> stopWordsFiles, IRAlgorithm algorithm, double titleRilevance) {
+    public QueryExecutionService(Folder folder, String query, ObservableList<File> stopWordsFiles, IRAlgorithm algorithm, double titleRelevance) {
         this.folder = folder;
         this.query = query;
         this.stopWordsFiles = stopWordsFiles;
         this.algorithm = algorithm;
-        this.titleRilevance = titleRilevance;
+        this.titleRelevance = titleRelevance;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class QueryExecutionService extends Service<QueryExecution> {
         return new Task<QueryExecution>() {
             @Override
             protected QueryExecution call() throws Exception {
-                QueryExecution queryExecution = new QueryExecution(folder, query, stopWordsFiles, algorithm, titleRilevance);
+                QueryExecution queryExecution = new QueryExecution(folder, query, stopWordsFiles, algorithm, titleRelevance);
 
                 for (File file : stopWordsFiles) {
                     StopWordsFile stopWordsFile = new StopWordsFile(file);
@@ -44,8 +44,8 @@ public class QueryExecutionService extends Service<QueryExecution> {
                     double[] bodyValues  = algorithm.getValues(document.getBody().getJoining(), vocabulary);
 
                     Score score = new Score(
-                            CosineSimilarity.compute(queryValues, titleValues) * titleRilevance,
-                            CosineSimilarity.compute(queryValues, bodyValues) * (1 - titleRilevance)
+                            CosineSimilarity.compute(queryValues, titleValues) * titleRelevance,
+                            CosineSimilarity.compute(queryValues, bodyValues) * (100 - titleRelevance)
                     );
 
                     queryExecution.setScore(document, score);

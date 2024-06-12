@@ -79,7 +79,6 @@
 }
 
 .queryField {
-    -fx-background-color: #D9D9D9;
     -fx-background-radius: 10pt 0 0 10pt;
 }
 
@@ -149,4 +148,102 @@
 .slider .thumb {
     -fx-background-color: #DB3434;
     -fx-cursor: hand;
+}
+
+.text-area,
+.text-area:focused {
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-focus-color: transparent;
+}
+
+.text-area .content,
+.text-area:focused .content {
+    -fx-background-color: rgba(217, 217, 217, 0.5);
+    -fx-border-color: transparent;
+    -fx-font-size: 14;
+}
+
+.statsContainer {
+    -fx-background-color: rgba(217, 217, 217, 0.5);
+    -fx-background-radius: 10pt;
+}
+
+.documentText,
+.documentText:focused {
+    -fx-background-color: rgba(217, 217, 217, 0.5);
+    -fx-background-radius: 10pt;
+}
+
+.documentText .content,
+.documentText:focused .content {
+    -fx-background-color: #fff;
+}
+
+.check-box .box {
+    -fx-background-color: rgba(217, 217, 217);
+    -fx-border-color: transparent;
+    -fx-border-radius: 5;
+    -fx-cursor: hand;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #DB3434;
+}
+
+.scroll-bar {
+    -fx-background-color: transparent;
+}
+
+.scroll-bar:horizontal .track,
+.scroll-bar:vertical .track {
+    -fx-fill: transparent;
+    -fx-background-color: transparent;
+    -fx-border-color: transparent;
+}
+
+.scroll-bar:horizontal .thumb,
+.scroll-bar:vertical .thumb {
+    -fx-background-color: #CBCBCB;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:horizontal .thumb:hover,
+.scroll-bar:vertical .thumb:hover {
+    -fx-cursor: hand;
+    -fx-background-color: #CBCBCB;
+    -fx-background-radius: 10;
+}
+
+.scroll-bar:horizontal .increment-button ,
+.scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0 0 4 0;
+
+}
+
+.scroll-bar:vertical .increment-button ,
+.scroll-bar:vertical .decrement-button {
+    -fx-background-color: transparent;
+    -fx-background-radius: 0;
+    -fx-padding: 0 4 0 0;
+
+}
+
+.scroll-bar .increment-arrow,
+.scroll-bar .decrement-arrow {
+    -fx-shape : " ";
+    -fx-padding: 4 0;
+}
+
+.scroll-bar:vertical .increment-arrow,
+.scroll-bar:vertical .decrement-arrow {
+    -fx-shape: " ";
+    -fx-padding: 0 4;
+}
+
+.progress-indicator {
+    -fx-progress-color: #DB3434;
 }

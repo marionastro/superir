@@ -13,6 +13,7 @@ public class StopWordsFile {
 
     public StopWordsFile(File file) throws IOException {
         this.file = file;
+
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String[] words = reader.lines()
                     .collect(Collectors.joining())

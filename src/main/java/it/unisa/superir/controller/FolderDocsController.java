@@ -1,5 +1,6 @@
 package it.unisa.superir.controller;
 
+import com.sun.xml.internal.ws.util.StringUtils;
 import it.unisa.superir.SuperIR;
 import it.unisa.superir.model.Document;
 import it.unisa.superir.model.QueryExecution;
@@ -7,6 +8,8 @@ import it.unisa.superir.model.Score;
 import it.unisa.superir.service.QueryExecutionService;
 import it.unisa.superir.view.DocView;
 import it.unisa.superir.view.QueryInsertView;
+import javafx.application.Platform;
+import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
 import javafx.event.EventType;
 import javafx.fxml.FXML;
@@ -14,32 +17,47 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Cursor;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+import javax.print.Doc;
 import java.net.URL;
+import java.util.Comparator;
+import java.util.Map;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
-public class FolderDocsController implements Initializable {
+public class FolderDocsController implements Initializable, Statistical, Loader {
+    @FXML private CheckBox showIrrelevantCheckBox;
+    @FXML private VBox statsRootPane;
     @FXML private FlowPane documentsContainer;
     @FXML private TextField queryField;
     @FXML private Text folderName;
+    @FXML private VBox loadingPane;
+    @FXML private BorderPane contentPane;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         QueryExecutionService service = SuperIR.getInstance().getQueryExecutionService();
 
-        if (service != null) {
-            if (!service.isRunning())
-                service.restart();
+        setLoading(true);
 
-            service.setOnSucceeded(event -> setup(service.getValue()));
-            service.setOnFailed(event -> {
-                // TODO
-            });
+        if (service != null) {
+            if (service.getState() != Worker.State.SUCCEEDED) {
+                service.restart();
+                service.setOnSucceeded(event -> setup(service.getValue()));
+                service.setOnFailed(event -> {
+                    Logger.getLogger(getClass().getName()).log(Level.SEVERE, null, service.getException());
+                    Alert alert = new Alert(Alert.AlertType.ERROR, service.getException().getMessage(), ButtonType.CLOSE);
+                    alert.showAndWait().ifPresent(c -> Platform.exit());
+                });
+            } else {
+                setup(service.getValue());
+            }
         }
     }
 
@@ -47,8 +65,38 @@ public class FolderDocsController implements Initializable {
         folderName.setText(queryExecution.getFolder().getName());
         queryField.setText(queryExecution.getQuery());
 
+        setLoading(false);
+
+        showIrrelevantCheckBox.setOnAction(e -> showDocuments(queryExecution, showIrrelevantCheckBox.isSelected()));
+        showIrrelevantCheckBox.fire();
+
+        addStats("Numero di documenti", String.valueOf(queryExecution.getFolder().getDocuments().size()), false);
+        addStats("Numero di documenti rilevanti", String.valueOf(
+                queryExecution.getFolder().getDocuments()
+                        .stream()
+                        .filter(d -> queryExecution.getScore(d).getTotalScore() > 0)
+                        .count()),
+                false);
+        addStats("Lunghezza totale", String.valueOf(queryExecution.getFolder().getTotalWords()), false);
+        addStats("Lunghezza media", String.valueOf(queryExecution.getFolder().getAverageDocumentsWords()), false);
+        addStats("Vocabolario", queryExecution.getFolder().getVocabulary().toString(), true);
+        addStats("Frequenza delle parole", queryExecution.getFolder().getOccurrences().entrySet()
+                .stream()
+                .filter(e -> e.getKey().matches("\\w+"))
+                .sorted((o1, o2) -> Long.compare(o2.getValue(), o1.getValue()))
+                .map(e -> e.getKey() + ": " + e.getValue())
+                .collect(Collectors.joining(", ")), true);
+    }
+
+    private void showDocuments(QueryExecution queryExecution, boolean irrelevant) {
+        documentsContainer.getChildren().clear();
+
         for (Document document : queryExecution.getSorted()) {
-            addDocumentPane(document, queryExecution.getScore(document));
+            Score score = queryExecution.getScore(document);
+
+            if (score.getTotalScore() > 0 || irrelevant) {
+                addDocumentPane(document, queryExecution.getScore(document));
+            }
         }
     }
 
@@ -63,7 +111,7 @@ public class FolderDocsController implements Initializable {
         Font font = new Font(18);
         documentName.setFont(font);
 
-        long scoreValue = Math.round(score.getTotalScore() * 100);
+        long scoreValue = score.getTotalScore();
         Text scoreText = new Text(scoreValue + "%");
         scoreText.setFont(font);
 
@@ -101,7 +149,23 @@ public class FolderDocsController implements Initializable {
         documentsContainer.getChildren().add(vBox);
     }
 
-    @FXML private void back(ActionEvent event) {
+    @FXML
+    private void back(ActionEvent event) {
         new QueryInsertView().show();
+    }
+
+    @Override
+    public VBox getStatsContainer() {
+        return statsRootPane;
+    }
+
+    @Override
+    public Pane getLoadingPane() {
+        return loadingPane;
+    }
+
+    @Override
+    public Pane getContentPane() {
+        return contentPane;
     }
 }

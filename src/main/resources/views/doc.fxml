@@ -9,189 +9,77 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
+<?import javafx.scene.control.ProgressIndicator?>
 <AnchorPane styleClass="root-pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="it.unisa.superir.controller.DocController">
    <children>
-      <BorderPane AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <top>
-            <BorderPane prefHeight="63.0" prefWidth="1220.0" BorderPane.alignment="CENTER">
-               <left>
-                  <Button onAction="#back" mnemonicParsing="false" prefHeight="44.0" prefWidth="44.0" text="←" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="18.0" />
-                     </font>
-                  </Button>
-               </left>
-               <center>
-                  <Text styleClass="folderName" fx:id="fileName" strokeType="OUTSIDE" strokeWidth="0.0" text="file" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </Text>
-               </center>
-               <BorderPane.margin>
-                  <Insets />
-               </BorderPane.margin>
-               <padding>
-                  <Insets right="44.0" />
-               </padding>
-            </BorderPane>
-         </top>
-         <center>
-            <VBox spacing="30.0" BorderPane.alignment="CENTER">
-               <padding>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-               </padding>
-               <children>
-                  <TextField fx:id="queryField" editable="false" prefHeight="69.0" prefWidth="801.0" promptText="query" />
-                  <TextArea fx:id="textArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                     <padding>
-                        <Insets left="100.0" right="100.0" />
-                     </padding>
-                  </TextArea>
-               </children>
-            </VBox>
-         </center>
-         <right>
-            <ScrollPane fitToWidth="true" BorderPane.alignment="TOP_CENTER">
-               <BorderPane.margin>
-                  <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-               </BorderPane.margin>
-               <content>
-                  <AnchorPane>
-                     <children>
-                        <VBox alignment="TOP_CENTER" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                           <children>
-                              <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15px;">
-                                 <top>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="TOP_LEFT">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                 </top>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                                 <center>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </center>
-                              </BorderPane>
-                              <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15px;">
-                                 <top>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="TOP_LEFT">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                 </top>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                                 <center>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </center>
-                              </BorderPane>
-                              <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15px;">
-                                 <top>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="TOP_LEFT">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                 </top>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                                 <center>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </center>
-                              </BorderPane>
-                              <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15px;">
-                                 <top>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="TOP_LEFT">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                 </top>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                                 <center>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </center>
-                              </BorderPane>
-                              <BorderPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: lightgrey; -fx-background-radius: 15px;">
-                                 <top>
-                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" BorderPane.alignment="TOP_LEFT">
-                                       <font>
-                                          <Font size="24.0" />
-                                       </font>
-                                    </Text>
-                                 </top>
-                                 <padding>
-                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                                 </padding>
-                                 <center>
-                                    <VBox prefHeight="200.0" prefWidth="100.0" spacing="10.0" BorderPane.alignment="CENTER">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                                       </children>
-                                       <padding>
-                                          <Insets bottom="10.0" top="10.0" />
-                                       </padding>
-                                    </VBox>
-                                 </center>
-                              </BorderPane>
-                           </children>
-                        </VBox>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
-         </right>
-      </BorderPane>
+   <StackPane prefHeight="719.0" prefWidth="1283.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+         <VBox fx:id="loadingPane" alignment="CENTER" prefHeight="200.0" prefWidth="100.0">
+            <children>
+               <ProgressIndicator fx:id="progressIndicator" />
+            </children>
+         </VBox>
+         <BorderPane fx:id="contentPane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <top>
+               <BorderPane prefHeight="63.0" prefWidth="1220.0" BorderPane.alignment="CENTER">
+                  <left>
+                     <Button onAction="#back" mnemonicParsing="false" prefHeight="44.0" prefWidth="44.0" text="←" BorderPane.alignment="CENTER">
+                        <font>
+                           <Font size="18.0" />
+                        </font>
+                     </Button>
+                  </left>
+                  <center>
+                     <Text styleClass="folderName" fx:id="fileName" strokeType="OUTSIDE" strokeWidth="0.0" text="file" BorderPane.alignment="CENTER">
+                        <font>
+                           <Font size="36.0" />
+                        </font>
+                     </Text>
+                  </center>
+                  <BorderPane.margin>
+                     <Insets />
+                  </BorderPane.margin>
+                  <padding>
+                     <Insets right="44.0" />
+                  </padding>
+               </BorderPane>
+            </top>
+            <center>
+               <VBox spacing="30.0" BorderPane.alignment="CENTER">
+                  <padding>
+                     <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  </padding>
+                  <children>
+                     <TextField fx:id="queryField" editable="false" prefHeight="69.0" prefWidth="801.0" promptText="query" />
+                     <TextArea styleClass="documentText" fx:id="textArea" editable="false" prefHeight="200.0" prefWidth="200.0" wrapText="true" VBox.vgrow="ALWAYS">
+                        <font>
+                           <Font size="24.0" />
+                        </font>
+                        <padding>
+                           <Insets left="100.0" right="100.0" />
+                        </padding>
+                     </TextArea>
+                  </children>
+               </VBox>
+            </center>
+            <right>
+               <ScrollPane fitToWidth="true" hbarPolicy="NEVER" prefHeight="537.0" prefWidth="358.0" BorderPane.alignment="TOP_CENTER">
+                  <BorderPane.margin>
+                     <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                  </BorderPane.margin>
+                  <content>
+                     <AnchorPane>
+                        <children>
+                           <VBox fx:id="statsRootPane" alignment="TOP_CENTER" spacing="30.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           </VBox>
+                        </children>
+                     </AnchorPane>
+                  </content>
+               </ScrollPane>
+            </right>
+         </BorderPane>
+      </children>
+   </StackPane>
    </children>
    <padding>
       <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />

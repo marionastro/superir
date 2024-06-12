@@ -1,28 +1,28 @@
 package it.unisa.superir.model;
 
 public class Score implements Comparable<Score> {
-    private final double titleScore;
-    private final double bodyScore;
+    private final long titleScore;
+    private final long bodyScore;
 
     public Score(double titleScore, double bodyScore) {
-        this.titleScore = titleScore;
-        this.bodyScore = bodyScore;
+        this.titleScore = Math.round(titleScore);
+        this.bodyScore = Math.round(bodyScore);
     }
 
-    public double getTitleScore() {
+    public long getTitleScore() {
         return titleScore;
     }
 
-    public double getBodyScore() {
+    public long getBodyScore() {
         return bodyScore;
     }
 
-    public double getTotalScore() {
+    public long getTotalScore() {
         return titleScore + bodyScore;
     }
 
     @Override
     public int compareTo(Score o) {
-        return Double.compare(this.getTotalScore(), o.getTotalScore());
+        return Long.compare(this.getTotalScore(), o.getTotalScore());
     }
 }
