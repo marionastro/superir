@@ -31,11 +31,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class QueryInsertController implements Initializable, Loader {
-    @FXML public Slider relevanceSlider;
-    @FXML public Text titleRelevance;
-    @FXML public Text bodyRelevance;
+    @FXML private Slider relevanceSlider;
+    @FXML private Text titleRelevance;
+    @FXML private Text bodyRelevance;
     @FXML private BorderPane contentPane;
-    @FXML private ProgressIndicator progressIndicator;
     @FXML private VBox loadingPane;
     @FXML private TextField queryField;
     @FXML private Button executeButton;

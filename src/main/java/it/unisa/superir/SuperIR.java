@@ -5,6 +5,7 @@ import it.unisa.superir.service.FolderLoaderService;
 import it.unisa.superir.service.QueryExecutionService;
 import it.unisa.superir.view.FolderSelectionView;
 import javafx.application.Application;
+import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class SuperIR extends Application {

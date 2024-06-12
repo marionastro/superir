@@ -22,7 +22,6 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 public class DocController implements Initializable, Statistical, Loader {
-    public ProgressIndicator progressIndicator;
     @FXML private VBox statsRootPane;
     @FXML private TextArea textArea;
     @FXML private TextField queryField;
