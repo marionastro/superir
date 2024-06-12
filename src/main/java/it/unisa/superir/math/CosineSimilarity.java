@@ -9,18 +9,15 @@ public final class CosineSimilarity {
         double d2 = 0.0d;
 
         // a and b should have same length...
-        for (int i = 0; i < a.length; i++)
+        for (int i = 0; i < a.length; i++) {
             n += (a[i] * b[i]);
-
-        for (double j : a)
-            d1 += Math.pow(j, 2);
-
-        for (double j : b)
-            d2 += Math.pow(j, 2);
+            d1 += Math.pow(a[i], 2);
+            d2 += Math.pow(b[i], 2);
+        }
 
         if ((d1 * d2) == 0)
             return 0.0d;
 
-        return Math.max(0, n / (Math.sqrt(d1) * Math.sqrt(d2)));
+        return n / (Math.sqrt(d1) * Math.sqrt(d2));
     }
 }

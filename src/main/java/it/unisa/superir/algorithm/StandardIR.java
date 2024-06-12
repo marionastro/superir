@@ -11,7 +11,7 @@ public class StandardIR implements IRAlgorithm {
         for (String token : tokens) {
             int index = vocabulary.getIndex(token);
 
-            if (index > 0) {
+            if (index >= 0) {
                 values[index]++;
             }
         }
