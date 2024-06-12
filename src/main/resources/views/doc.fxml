@@ -51,14 +51,19 @@
                   </padding>
                   <children>
                      <TextField fx:id="queryField" editable="false" prefHeight="69.0" prefWidth="801.0" promptText="query" />
-                     <VBox alignment="CENTER" VBox.vgrow="ALWAYS" style="-fx-background-color: #fff; -fx-background-radius: 10pt">
+                     <AnchorPane style="-fx-background-color: rgba(217, 217, 217, 0.5); -fx-background-radius: 10pt">
                         <padding>
-                           <Insets bottom="20.0" top="20.0" />
+                           <Insets top="15" bottom="15" left="15" right="15" />
                         </padding>
-                        <children>
-                           <WebView fx:id="webView" VBox.vgrow="ALWAYS" />
-                        </children>
-                     </VBox>
+                        <VBox AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" style="-fx-background-color: #fff; -fx-background-radius: 5pt" alignment="CENTER" VBox.vgrow="ALWAYS" >
+                           <padding>
+                              <Insets bottom="20.0" top="20.0" />
+                           </padding>
+                           <children>
+                              <WebView fx:id="webView" VBox.vgrow="ALWAYS" />
+                           </children>
+                        </VBox>
+                     </AnchorPane>
                   </children>
                </VBox>
             </center>
