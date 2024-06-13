@@ -7,9 +7,20 @@ import javafx.concurrent.Task;
 
 import java.io.File;
 
+/**
+ *Service used to get all the documents in a folder.
+ * @author Gruppo5
+ */
 public class FolderLoaderService extends Service<Folder> {
     private final File folderFile;
 
+    /**
+     *This service receives a folder name and creates a Folder istance for it, 
+     * it extracts all txt files that it contains creating a Document istance for each 
+     * and adding it to the Foulder istance.
+     * 
+     * @param folderFile    the name of a folder.
+     */
     public FolderLoaderService(File folderFile) {
         this.folderFile = folderFile;
     }

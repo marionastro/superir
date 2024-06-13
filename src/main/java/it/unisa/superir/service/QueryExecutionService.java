@@ -9,6 +9,10 @@ import javafx.concurrent.Task;
 
 import java.io.File;
 
+/**
+ *Service used to execute a query.
+ * @author Gruppo5
+ */
 public class QueryExecutionService extends Service<QueryExecution> {
     private final Folder folder;
     private final String query;
@@ -16,6 +20,18 @@ public class QueryExecutionService extends Service<QueryExecution> {
     private final IRAlgorithm algorithm;
     private final double titleRelevance;
 
+    /**
+     *Service that calculate the score of each document in a given folder,
+     * It filters out from all docs vocabularies all the words present in the stopWords file vocabularies,
+     * then, for each document, it calculates the score using CosineSimilarity
+     * it then returns the execution query containing all the scores.
+     * 
+     * @param folder    the folder in which to extract the documents.
+     * @param query     the query used to calculate score.
+     * @param stopWordsFiles    files containing stopwords.
+     * @param algorithm         the IR algorithm to apply to calculate score.
+     * @param titleRelevance    the weight that words in title have in the score calculation.
+     */
     public QueryExecutionService(Folder folder, String query, ObservableList<File> stopWordsFiles, IRAlgorithm algorithm, double titleRelevance) {
         this.folder = folder;
         this.query = query;

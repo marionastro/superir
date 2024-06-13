@@ -4,13 +4,30 @@ import it.unisa.superir.model.Document;
 import it.unisa.superir.model.Folder;
 import it.unisa.superir.model.Vocabulary;
 
+/**
+ *Implementation of TF-IDF IR Algorithm, the score is affected by document length 
+ * and frequencey of the word in the entire folder.
+ * 
+ * @author Gruppo5
+ */
 public class TFIDF implements IRAlgorithm {
     private final Folder folder;
 
+    /**
+     *function to associate a folder to the algorithm.
+     * @param folder    the folder to use the algorithm on.
+     */
     public TFIDF(Folder folder) {
         this.folder = folder;
     }
 
+    /**
+     *Funtion to run to calculate the IR score of a word given a set of words.
+     * 
+     * @param string        string to calculate the score of.
+     * @param vocabulary    set of words used to calculate the scores of the string.
+     * @return              the string scores.
+     */
     @Override
     public double[] getValues(String string, Vocabulary vocabulary) {
         double[] values = new double[vocabulary.getLength()];
@@ -32,6 +49,14 @@ public class TFIDF implements IRAlgorithm {
         return values;
     }
 
+    /**
+     * Function to run to obtain the weight of a diven word
+     * the method calculates the number of documents in which the word appears and
+     * the total number of documents in the folder.
+     * 
+     * @param term      the term to calclulate the idf on
+     * @return          the idf of term.
+     */
     private double getWeight(String term) {
         int folderSize  = folder.getSize();
         int folderCount = 0;
@@ -42,6 +67,15 @@ public class TFIDF implements IRAlgorithm {
         return getIDF(folderSize, folderCount);
     }
 
+    /**
+     * Function to run to obtain the idf of a word
+     * if the folder is empty or the word never occures, returns 0
+     * else return log10 of the ratio between total and times.
+     * 
+     * @param total         total number of documents in the folder.
+     * @param times         number of documents containing a given word.
+     * @return              the IDF.
+     */
     private double getIDF(int total, int times) {
         if (times == 0 || total == times)
             return 0.0d;

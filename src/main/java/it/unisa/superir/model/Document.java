@@ -11,12 +11,23 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/**
+ *This Class rappresents a text file and its content.
+ * 
+ * @author Gruppo5
+ */
 public class Document {
     private final File file;
     private final Text title;
     private final Text body;
     private final Vocabulary vocabulary;
 
+    /**
+     *Costructor given the file.
+     * 
+     * @param file          the file to rappresent.
+     * @throws IOException  throws an IOException if the file is not found.
+     */
     public Document(File file) throws IOException {
         this.file = file;
 
@@ -36,31 +47,68 @@ public class Document {
         }
     }
 
+    /**
+     *costructor given the file name.
+     * 
+     * @param fileName      the name of the file to rappresent.
+     * @throws IOException  throws an IOException if the file is not found.
+     */
     public Document(String fileName) throws IOException {
         this(new File(fileName));
     }
 
+    /**
+     *Function to call to get the document title (first line of file) as a TExt Object.
+     * 
+     * @return  the title (first line) of the document.
+     */
     public Text getTitle() {
         return title;
     }
 
+    /**
+     *Function to call to get the document body  as a TExt Object.
+     * 
+     * @return  the body of the document.
+     */
     public Text getBody() {
         return body;
     }
 
+    /**
+     *Function to call to get the document vocabulary (set of words it contains).
+     * 
+     * @return  the set of words used in the document.
+     */
     public Vocabulary getVocabulary() {
         return vocabulary;
     }
 
+    /**
+     *Function to call to get the file the document rappresents.
+     * 
+     * @return  the file the document is rappresenting.
+     */
     public File getFile() {
         return file;
     }
 
+    /**
+     *Function to call to get the document length (sum of title and body number of charachters).
+     * 
+     * @return  the number of words in the title and in the body.
+     */
     public int getLength() {
         return getTitle().getJoining().split(" ").length +
                getBody().getJoining().split(" ").length;
     }
 
+    /**
+     *Function to call to get a mapping between a word in the document and
+     * the number of times it is present in it.
+     * 
+     * @return      a map with words and their score.
+     */
     public Map<String, Long> getOccurrences() {
         return new HashMap<String, Long>() {
             {

@@ -30,6 +30,10 @@ import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ *Controller used for interractions and updates on the QueryInsertView.
+ * @author Gruppo5
+ */
 public class QueryInsertController implements Initializable, Loader {
     @FXML private Slider relevanceSlider;
     @FXML private Text titleRelevance;
@@ -65,6 +69,10 @@ public class QueryInsertController implements Initializable, Loader {
         }
     }
 
+    /**
+     * Function to run to set up the QueryInsertView.
+     * @param folder 
+     */
     private void setup(Folder folder) {
         folderName.setText(folder.getName());
 
@@ -114,14 +122,26 @@ public class QueryInsertController implements Initializable, Loader {
         stopWordsFilesTable.setContextMenu(contextMenu);
     }
 
+    /**
+     * Function to show/hide the advanced options on screen.
+     * @param event 
+     */
     @FXML private void toggleAdvancedOptions(ActionEvent event) {
         advancedOptionsPane.setVisible(!advancedOptionsPane.isVisible());
     }
 
+    /**
+     * Fuction to go back to the previous view (FolderSelectionView).
+     * @param event 
+     */
     @FXML private void back(ActionEvent event) {
         new FolderSelectionView().show();
     }
 
+    /**
+     * fuction to add a new txt file and use its content as stopwords for the algorithm.
+     * @param event 
+     */
     @FXML private void addStopWordsFile(ActionEvent event) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Seleziona il file con le Stop Words.");
@@ -136,11 +156,19 @@ public class QueryInsertController implements Initializable, Loader {
         }
     }
 
+    /**
+     *Function to run to obtain the loading pane.
+     * @return  the loading pane.
+     */
     @Override
     public Pane getLoadingPane() {
         return loadingPane;
     }
 
+    /**
+     *Function to run to obtain the content pane.
+     * @return  the content pane.
+     */
     @Override
     public Pane getContentPane() {
         return contentPane;

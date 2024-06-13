@@ -14,6 +14,10 @@ import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ *Controller used for interractions and updates on the FolderSelectionView.
+ * @author Gruppo5
+ */
 public class FolderSelectionController implements Initializable {
     @FXML private AnchorPane rootPane;
     @FXML private Button selectFromComputerButton;

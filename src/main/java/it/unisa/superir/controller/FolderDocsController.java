@@ -31,6 +31,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ *Controller used for interractions and updates on the FolderDocsView.
+ * @author Gruppo5
+ */
 public class FolderDocsController implements Initializable, Statistical, Loader {
     @FXML private CheckBox showIrrelevantCheckBox;
     @FXML private VBox statsRootPane;
@@ -61,6 +65,10 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
         }
     }
 
+    /**
+     * Function to run to set up the FolderDocsView.
+     * @param queryExecution 
+     */
     private void setup(QueryExecution queryExecution) {
         folderName.setText(queryExecution.getFolder().getName());
         queryField.setText(queryExecution.getQuery());
@@ -88,6 +96,13 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
                 .collect(Collectors.joining(", ")), true);
     }
 
+    /**
+     * Function to run to show a document on the List of documents
+     * (the documents with a score of 0 are showed only if the "Show Irrelevant Docs" is selected).
+     * 
+     * @param queryExecution    the results of the execution of the IR algorithm.
+     * @param irrelevant        boolean propriety that tells if the users wants to see the documents with null score
+     */
     private void showDocuments(QueryExecution queryExecution, boolean irrelevant) {
         documentsContainer.getChildren().clear();
 
@@ -100,6 +115,12 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
         }
     }
 
+    /**
+     * Function to run to add a document to the Pane showing all the folder documents.
+     * 
+     * @param document  document to add to the pane
+     * @param score     score of the document to add
+     */
     private void addDocumentPane(Document document, Score score) {
         VBox vBox = new VBox();
         vBox.setAlignment(Pos.CENTER);
@@ -149,21 +170,37 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
         documentsContainer.getChildren().add(vBox);
     }
 
+    /**
+     * Fuction to go back to the previous view (QueryInsertView).
+     * @param event 
+     */
     @FXML
     private void back(ActionEvent event) {
         new QueryInsertView().show();
     }
 
+    /**
+     *Function to run to obtain the Pane containing the folder statistics.
+     * @return      the Pane containing the folder statistics.
+     */
     @Override
     public VBox getStatsContainer() {
         return statsRootPane;
     }
 
+    /**
+     *Function to run to obtain the loading pane.
+     * @return      the loading pane.
+     */
     @Override
     public Pane getLoadingPane() {
         return loadingPane;
     }
 
+    /**
+     *Function to run to obtain the list of all the documents scores.
+     * @return  the list of all the documents scores.
+     */
     @Override
     public Pane getContentPane() {
         return contentPane;

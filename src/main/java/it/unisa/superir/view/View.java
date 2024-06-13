@@ -13,7 +13,16 @@ import java.net.URL;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Abstract interface that rappresents a generic view, providing fundamental methods.
+ * @author Gruppo5
+ */
 public abstract class View {
+
+    /**
+     * Function to call when you need to substitude a scene with one that has
+     * this type of view.
+     */
     public void show() {
         try {
             Stage stage = SuperIR.getInstance().getCurrentStage();
@@ -35,7 +44,15 @@ public abstract class View {
         }
     }
 
+    /**
+     * Funtion to run to obtaint the View FXML source.
+     * @return      the View source.
+     */
     public abstract URL getFXML();
 
+    /**
+     * Function to obtain the View title.
+     * @return      the title of the view.
+     */
     public abstract String getTitle();
 }

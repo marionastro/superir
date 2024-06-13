@@ -7,10 +7,19 @@ import java.io.IOException;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
+/**
+ *This class rappresents a generic file containing stopwords.
+ * @author Gruppo5
+ */
 public class StopWordsFile {
     private final File file;
     private final Vocabulary vocabulary;
 
+    /**
+     * Costructor given the file, its content becomes the StopWordsFile vocabulary.
+     * @param file          the file to use as stopwordsfiles.
+     * @throws IOException  throws an IOException if the file is not found.
+     */
     public StopWordsFile(File file) throws IOException {
         this.file = file;
 
@@ -22,14 +31,27 @@ public class StopWordsFile {
         }
     }
 
+    /**
+     *Costructor given the file containing Stop words name.
+     * @param fileName        the name of the file to use as stopwordsfiles.
+     * @throws IOException    throws an IOException if the file is not found.
+     */
     public StopWordsFile(String fileName) throws IOException {
         this(new File(fileName));
     }
 
+    /**
+     *Function to run to obtain the file.
+     * @return  the file used as a stopword file.
+     */
     public File getFile() {
         return file;
     }
 
+    /**
+     *Function to run to obtain the vocabulary (set of words present in the file).
+     * @return  the vocabulary of the stopword file.
+     */
     public Vocabulary getVocabulary() {
         return vocabulary;
     }

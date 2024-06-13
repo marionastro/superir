@@ -23,6 +23,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ *Controller used for interractions and updates on the DocView.
+ * @author Gruppo5
+ */
 public class DocController implements Initializable, Statistical, Loader {
     @FXML private VBox statsRootPane;
     @FXML private TextField queryField;
@@ -86,20 +90,36 @@ public class DocController implements Initializable, Statistical, Loader {
                 .collect(Collectors.joining(", ")), true);
     }
 
+    /**
+     * Fuction to go back to the previous view (FolderDocsView).
+     * @param event 
+     */
     @FXML private void back(ActionEvent event) {
         new FolderDocsView().show();
     }
 
+    /**
+     *Function to run to obtain the pane containing the documents Statistics.
+     * @return      the pane containing the documents Statistics.
+     */
     @Override
     public VBox getStatsContainer() {
         return statsRootPane;
     }
 
+    /**
+     *Function to run to obtain the loading pane.
+     * @return  the loading pane.
+     */
     @Override
     public Pane getLoadingPane() {
         return loadingPane;
     }
 
+    /**
+     *Function to run to obtain the Pane containg the document content.
+     * @return  the Pane containg the document content.
+     */
     @Override
     public Pane getContentPane() {
         return contentPane;

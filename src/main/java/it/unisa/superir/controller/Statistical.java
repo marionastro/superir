@@ -11,10 +11,25 @@ import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
+/**
+ *A generic interface in which stats are showed.
+ * @author Gruppo5
+ */
 @FunctionalInterface
 public interface Statistical {
+
+    /**
+     *Function to obtain the pane containg statistics.
+     * @return  the container of the stats.
+     */
     Pane getStatsContainer();
 
+    /**
+     *Function to add a new stat on the view.
+     * @param title     name of the stat.
+     * @param data      value of the stat.
+     * @param wrapData  tells if text is multiline or not.
+     */
     default void addStats(String title, String data, boolean wrapData) {
         BorderPane rootPane = new BorderPane();
         VBox.setVgrow(rootPane, Priority.ALWAYS);
