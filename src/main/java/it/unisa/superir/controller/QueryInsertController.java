@@ -96,15 +96,12 @@ public class QueryInsertController implements Initializable, Loader {
         bodyRelevance.textProperty().bind(bodyRelevanceBinding);
 
         stopWordsFileColumn.setCellValueFactory(new PropertyValueFactory<>("path"));
-        executeButton.disableProperty().bind(Bindings.createBooleanBinding(
-                () -> queryField.textProperty().get().trim().isEmpty(),
-                queryField.textProperty()
-        ));
+        executeButton.disableProperty().bind(queryField.textProperty().isEmpty());
 
         executeButton.setOnAction(event -> {
             QueryExecutionService service = new QueryExecutionService(
                     folder,
-                    queryField.getText().trim(),
+                    queryField.getText(),
                     stopWordsFilesTable.getItems(),
                     irComboBox.getSelectionModel().getSelectedIndex() == 0 ? new StandardIR() : new TFIDF(folder),
                     relevanceSlider.getValue()

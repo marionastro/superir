@@ -53,9 +53,9 @@ public class QueryExecutionService extends Service<QueryExecution> {
                 }
 
                 Vocabulary vocabulary = folder.getVocabulary();
-                double[] queryValues = algorithm.getValues(query, vocabulary);
 
                 for (Document document : folder.getDocuments()) {
+                    double[] queryValues = algorithm.getValues(query, vocabulary);
                     double[] titleValues = algorithm.getValues(document.getTitle().getJoining(), vocabulary);
                     double[] bodyValues  = algorithm.getValues(document.getBody().getJoining(), vocabulary);
 
