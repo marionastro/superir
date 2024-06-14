@@ -4,4 +4,5 @@ body {
     font-size: 22px;
     padding: 20px;
     font-family: sans-serif;
+    white-space: pre-line;
 }

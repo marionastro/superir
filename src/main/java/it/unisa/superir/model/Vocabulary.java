@@ -70,8 +70,7 @@ public class Vocabulary {
      * @return              a vocabulary that contains the instance words except the param ones.
      */
     public Vocabulary filter(Vocabulary vocabulary) {
-        Stream<String> res = stream()
-                .filter(s -> vocabulary.stream().noneMatch(s::equals));
+        Stream<String> res = stream().filter(s -> vocabulary.stream().noneMatch(s::equals));
         return new Vocabulary(res);
     }
 

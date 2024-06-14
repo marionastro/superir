@@ -46,13 +46,13 @@ public class QueryExecutionService extends Service<QueryExecution> {
             @Override
             protected QueryExecution call() throws Exception {
                 QueryExecution queryExecution = new QueryExecution(folder, query, stopWordsFiles, algorithm, titleRelevance);
+                Vocabulary vocabulary = folder.getVocabulary();
 
                 for (File file : stopWordsFiles) {
                     StopWordsFile stopWordsFile = new StopWordsFile(file);
-                    folder.filter(stopWordsFile);
+                    vocabulary = vocabulary.filter(stopWordsFile.getVocabulary());
                 }
 
-                Vocabulary vocabulary = folder.getVocabulary();
                 double[] queryValues = algorithm.getValues(query, vocabulary);
 
                 for (Document document : folder.getDocuments()) {

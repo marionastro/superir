@@ -33,7 +33,7 @@ public class Document {
 
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String t = reader.readLine();
-            String b = reader.lines().collect(Collectors.joining());
+            String b = reader.lines().collect(Collectors.joining("\n"));
 
             this.title = new Text(t);
             this.body  = new Text(b);

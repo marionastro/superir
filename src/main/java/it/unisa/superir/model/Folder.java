@@ -64,22 +64,6 @@ public class Folder {
         return false;
     }
 
-    /**
-     * Function to run to filters out of the folder vocabulary the words present in the given vocabulary.
-     * 
-     * @param vocabulary the set of words to remove from the folder vocabulary.
-     */
-    public void filter(Vocabulary vocabulary) {
-        this.vocabulary = this.vocabulary.filter(vocabulary);
-    }
-
-    /**
-     * Function to run to filters out of the folder vocabulary the words present in the StopWordsFile.
-     * @param stopWordsFile a file containing stopwords.
-     */
-    public void filter(StopWordsFile stopWordsFile) {
-        this.filter(stopWordsFile.getVocabulary());
-    }
 
     /**
      * Function to run to get the total number of words contained in the document of the folder.
