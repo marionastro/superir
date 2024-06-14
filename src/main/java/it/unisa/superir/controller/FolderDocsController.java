@@ -1,6 +1,5 @@
 package it.unisa.superir.controller;
 
-import com.sun.xml.internal.ws.util.StringUtils;
 import it.unisa.superir.SuperIR;
 import it.unisa.superir.model.Document;
 import it.unisa.superir.model.QueryExecution;
@@ -11,7 +10,6 @@ import it.unisa.superir.view.QueryInsertView;
 import javafx.application.Platform;
 import javafx.concurrent.Worker;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
@@ -22,10 +20,7 @@ import javafx.scene.layout.*;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-import javax.print.Doc;
 import java.net.URL;
-import java.util.Comparator;
-import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
