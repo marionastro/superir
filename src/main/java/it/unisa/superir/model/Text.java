@@ -54,15 +54,17 @@ public class Text {
     }
 
     /**
-     *Function to run to get the number of words in a text.
+     * Function to run to get the number of words in a text.
      * @return  the number of words in the Text.
      */
     public Map<String, Long> getOccurrences() {
-        return stream().collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
+        return stream()
+                .filter(s -> s.matches("[A-Za-zÀ-ú0-9]+"))
+                .collect(Collectors.groupingBy(String::toLowerCase, Collectors.counting()));
     }
 
     /**
-     *Function to run to get the array of all the Text words and other characters
+     * Function to run to get the array of all the Text words and other characters
      * (such as spaces; commas; question marks etc.).
      * 
      * @return  the entire Text.

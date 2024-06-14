@@ -39,8 +39,8 @@ public class Document {
             this.body  = new Text(b);
 
             Stream<String> concatStream = Stream.concat (
-                    Arrays.stream(t.split("[^A-zÀ-ú0-9]+")),
-                    Arrays.stream(b.split("[^A-zÀ-ú0-9]+"))
+                    Arrays.stream(t.split("[^A-Za-zÀ-ú0-9]+")),
+                    Arrays.stream(b.split("[^A-Za-zÀ-ú0-9]+"))
             );
 
             this.vocabulary = new Vocabulary(concatStream);

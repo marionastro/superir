@@ -18,6 +18,7 @@ public class Vocabulary {
      */
     public Vocabulary(Stream<String> stream) {
         this.tokens = stream
+                .filter(s -> !s.trim().isEmpty()) // Exclude blank strings.
                 .map(String::toLowerCase)
                 .distinct()
                 .collect(Collectors.toList());

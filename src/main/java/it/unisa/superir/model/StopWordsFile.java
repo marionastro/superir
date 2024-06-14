@@ -26,7 +26,7 @@ public class StopWordsFile {
         try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
             String[] words = reader.lines()
                     .collect(Collectors.joining("\n"))
-                    .split("[^A-zÀ-ú0-9]+");
+                    .split("[^A-Za-zÀ-ú0-9]+");
             this.vocabulary = new Vocabulary(words);
         }
     }
