@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="superir:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/superir_jar</output-path>
+    <root id="archive" name="superir.jar">
+      <element id="module-output" name="superir" />
+    </root>
+  </artifact>
+</component>
