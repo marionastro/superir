@@ -39,16 +39,16 @@ public class SuperIR extends Application {
     }
 
     /**
-     *Function to run to obtain the istance of an application.
+     * Function to run to obtain the instance of an application.
      * 
-     * @return an istance of the application.
+     * @return an instance of the application.
      */
     public static SuperIR getInstance() {
         return instance;
     }
 
     /**
-     *Function to run to obtain the current stage in use.
+     * Function to run to obtain the current stage in use.
      * 
      * @return  the current stage used.
      */
@@ -57,7 +57,7 @@ public class SuperIR extends Application {
     }
 
     /**
-     *Function to run to obtain the FolderLoaderService in use.
+     * Function to run to obtain the FolderLoaderService in use.
      * @return      the folderLoaderService used.
      */
     public FolderLoaderService getFolderLoaderService() {
@@ -65,7 +65,7 @@ public class SuperIR extends Application {
     }
 
     /**
-     *Function to run to impose the new FolderLoaderService.
+     * Function to run to impose the new FolderLoaderService.
      * @param folderLoaderService   the folderLoaderService to use.
      */
     public void setFolderLoaderService(FolderLoaderService folderLoaderService) {
@@ -73,7 +73,7 @@ public class SuperIR extends Application {
     }
 
     /**
-     *Function to run to obtain the QueryExecutionService in use.
+     * Function to run to obtain the QueryExecutionService in use.
      * @return the queryExecutionService used.
      */
     public QueryExecutionService getQueryExecutionService() {
@@ -81,7 +81,7 @@ public class SuperIR extends Application {
     }
 
     /**
-     *Function to run to impose the new QueryExecutionService.
+     * Function to run to impose the new QueryExecutionService.
      * @param queryExecutionService the queryExecutionService to use.
      */
     public void setQueryExecutionService(QueryExecutionService queryExecutionService) {
@@ -97,7 +97,7 @@ public class SuperIR extends Application {
     }
 
     /**
-     * Functiont to run to impose wich document is currently selected.
+     * Function to run to impose which document is currently selected.
      * @param selectedDocument  a document to select.
      */
     public void setSelectedDocument(Document selectedDocument) {

@@ -5,13 +5,13 @@ import it.unisa.superir.SuperIR;
 import java.net.URL;
 
 /**
- *Class that rappresent the UI of the Folder Selection page.
+ * Class that represent the UI of the Folder Selection page.
  * @author Gruppo5
  */
 public class FolderSelectionView extends View {
 
     /**
-     *Funtion to run to obtaint the View FXML source.
+     * Function to run to obtain the View FXML source.
      * @return      the View source.
      */
     @Override
@@ -20,7 +20,7 @@ public class FolderSelectionView extends View {
     }
 
     /**
-     *Function to obtain the View title.
+     * Function to obtain the View title.
      * @return      the title of the view.
      */
     @Override

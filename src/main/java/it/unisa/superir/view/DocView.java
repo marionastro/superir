@@ -5,13 +5,13 @@ import it.unisa.superir.SuperIR;
 import java.net.URL;
 
 /**
- *Class that rappresent the UI of the page that shows the content of a documents.
+ * Class that represent the UI of the page that shows the content of a documents.
  * @author Gruppo5
  */
 public class DocView extends View {
 
     /**
-     *Funtion to run to obtaint the View FXML source.
+     * Function to run to obtain the View FXML source.
      * @return      the View source.
      */
     @Override
@@ -20,7 +20,7 @@ public class DocView extends View {
     }
 
     /**
-     *Function to obtain the View title.
+     * Function to obtain the View title.
      * @return      the title of the view.
      */
     @Override

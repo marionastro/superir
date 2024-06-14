@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 /**
- *A generic interface in which stats are showed.
+ * A generic interface in which stats are showed.
  * @author Gruppo5
  */
 @FunctionalInterface
@@ -25,7 +25,7 @@ public interface Statistical {
     Pane getStatsContainer();
 
     /**
-     *Function to add a new stat on the view.
+     * Function to add a new stat on the view.
      * @param title     name of the stat.
      * @param data      value of the stat.
      * @param wrapData  tells if text is multiline or not.

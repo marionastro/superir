@@ -10,7 +10,7 @@ import javafx.concurrent.Task;
 import java.io.File;
 
 /**
- *Service used to execute a query.
+ * Service used to execute a query.
  * @author Gruppo5
  */
 public class QueryExecutionService extends Service<QueryExecution> {
@@ -21,7 +21,7 @@ public class QueryExecutionService extends Service<QueryExecution> {
     private final double titleRelevance;
 
     /**
-     *Service that calculate the score of each document in a given folder,
+     * Service that calculate the score of each document in a given folder,
      * It filters out from all docs vocabularies all the words present in the stopWords file vocabularies,
      * then, for each document, it calculates the score using CosineSimilarity
      * it then returns the execution query containing all the scores.

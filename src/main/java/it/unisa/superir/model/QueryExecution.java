@@ -8,7 +8,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * This class rappresent an execution of query using an IR algorithm on a folder.
+ * This class represent an execution of query using an IR algorithm on a folder.
  * @author Gruppo5
  */
 public class QueryExecution {
@@ -20,7 +20,7 @@ public class QueryExecution {
     private final Map<Document, Score> scores;
 
     /**
-     *Costructor.
+     * Constructor.
      * 
      * @param folder        the folder to perform the algorithm on.
      * @param query         the query to use for the IR algorithm.
@@ -38,7 +38,7 @@ public class QueryExecution {
     }
 
     /**
-     *Function to run to assign a score to a specific Document.
+     * Function to run to assign a score to a specific Document.
      * 
      * @param document  the document that has to be assign a score
      * @param score     the score to assign to the document
@@ -49,8 +49,8 @@ public class QueryExecution {
     }
 
     /**
-     *Function to run obtain the score of a given Document as a Score Object.
-     * @param document  document whose score hasto be extracted.
+     * Function to run obtain the score of a given Document as a Score Object.
+     * @param document  document whose score has to be extracted.
      * @return  the score of the document.
      */
     public Score getScore(Document document) {
@@ -62,7 +62,7 @@ public class QueryExecution {
     /**
      * Function to run to order in a list, using a reverse sorting, 
      * the folder documents, the first element is the document with the higher score.
-     * @return the orderd list of documents.
+     * @return the ordered list of documents.
      */
     public List<Document> getSorted() {
         return scores.keySet().stream()
@@ -71,7 +71,7 @@ public class QueryExecution {
     }
 
     /**
-     *Function to run to obtain the folder the algorithm is executed on.
+     * Function to run to obtain the folder the algorithm is executed on.
      * @return  the folder used in the algorithm.
      */
     public Folder getFolder() {
@@ -79,7 +79,7 @@ public class QueryExecution {
     }
 
     /**
-     *Function to run to obtain the query the IR algorithm is using.
+     * Function to run to obtain the query the IR algorithm is using.
      * @return  the query used in the algorithm.
      */
     public String getQuery() {
@@ -87,7 +87,7 @@ public class QueryExecution {
     }
 
     /**
-     *Function to run to obtain the list of files containing stop words that algorithm is considering.
+     * Function to run to obtain the list of files containing stop words that algorithm is considering.
      * @return  the list of stopwords files used in the algorithm.
      */
     public ObservableList<File> getStopWordsFiles() {
@@ -95,7 +95,7 @@ public class QueryExecution {
     }
 
     /**
-     *Function to run to obtain the algorithm used.
+     * Function to run to obtain the algorithm used.
      * @return  the algorithm used in the execution of the query.
      */
     public IRAlgorithm getAlgorithm() {
@@ -103,7 +103,7 @@ public class QueryExecution {
     }
 
     /**
-     *Function to run to obtain the weight modifier used for the words in a document title.
+     * Function to run to obtain the weight modifier used for the words in a document title.
      * @return  the weight of title words used in the algorithm.
      */
     public double getTitleRelevance() {

@@ -5,8 +5,8 @@ import it.unisa.superir.model.Folder;
 import it.unisa.superir.model.Vocabulary;
 
 /**
- *Implementation of TF-IDF IR Algorithm, the score is affected by document length 
- * and frequencey of the word in the entire folder.
+ * Implementation of TF-IDF IR Algorithm, the score is affected by document length
+ * and frequency of the word in the entire folder.
  * 
  * @author Gruppo5
  */
@@ -14,7 +14,7 @@ public class TFIDF implements IRAlgorithm {
     private final Folder folder;
 
     /**
-     *function to associate a folder to the algorithm.
+     * function to associate a folder to the algorithm.
      * @param folder    the folder to use the algorithm on.
      */
     public TFIDF(Folder folder) {
@@ -22,7 +22,7 @@ public class TFIDF implements IRAlgorithm {
     }
 
     /**
-     *Funtion to run to calculate the IR score of a word given a set of words.
+     * Function to run to calculate the IR score of a word given a set of words.
      * 
      * @param string        string to calculate the score of.
      * @param vocabulary    set of words used to calculate the scores of the string.
@@ -50,11 +50,11 @@ public class TFIDF implements IRAlgorithm {
     }
 
     /**
-     * Function to run to obtain the weight of a diven word
+     * Function to run to obtain the weight of a given word
      * the method calculates the number of documents in which the word appears and
      * the total number of documents in the folder.
      * 
-     * @param term      the term to calclulate the idf on
+     * @param term      the term to calculate the idf on
      * @return          the idf of term.
      */
     private double getWeight(String term) {
@@ -62,14 +62,16 @@ public class TFIDF implements IRAlgorithm {
         int folderCount = 0;
 
         for (Document d : folder.getDocuments())
-            folderCount += d.getBody().containsIgnoreCase(term) ? 1 : 0;
+            folderCount += (d.getTitle().containsIgnoreCase(term) ||
+                            d.getBody().containsIgnoreCase(term))
+                        ? 1 : 0;
 
         return getIDF(folderSize, folderCount);
     }
 
     /**
      * Function to run to obtain the idf of a word
-     * if the folder is empty or the word never occures, returns 0
+     * if the folder is empty or the word never occurs, returns 0
      * else return log10 of the ratio between total and times.
      * 
      * @param total         total number of documents in the folder.

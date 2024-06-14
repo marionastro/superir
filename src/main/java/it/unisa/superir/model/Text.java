@@ -6,14 +6,14 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- *This class rappresents the text of a textual document.
+ * This class represents the text of a textual document.
  * @author Gruppo5
  */
 public class Text {
     private final String[] content;
 
     /**
-     *Costructor given a series of strings.
+     * Constructor given a series of strings.
      * @param content   a series of strings.
      */
     public Text(String... content) {
@@ -21,7 +21,7 @@ public class Text {
     }
 
     /**
-     *Costructor given a single string to split on word boundaries.
+     * Constructor given a single string to split on word boundaries.
      * @param string    a string.
      */
     public Text(String string) {
@@ -63,7 +63,7 @@ public class Text {
 
     /**
      *Function to run to get the array of all the Text words and other characters
-     * (such as spaces; commas; question marks etc).
+     * (such as spaces; commas; question marks etc.).
      * 
      * @return  the entire Text.
      */

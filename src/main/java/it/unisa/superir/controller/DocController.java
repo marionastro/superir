@@ -24,7 +24,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- *Controller used for interractions and updates on the DocView.
+ * Controller used for interactions and updates on the DocView.
  * @author Gruppo5
  */
 public class DocController implements Initializable, Statistical, Loader {
@@ -91,7 +91,7 @@ public class DocController implements Initializable, Statistical, Loader {
     }
 
     /**
-     * Fuction to go back to the previous view (FolderDocsView).
+     * Function to go back to the previous view (FolderDocsView).
      * @param event 
      */
     @FXML private void back(ActionEvent event) {
@@ -99,8 +99,8 @@ public class DocController implements Initializable, Statistical, Loader {
     }
 
     /**
-     *Function to run to obtain the pane containing the documents Statistics.
-     * @return      the pane containing the documents Statistics.
+     * Function to run to obtain the pane containing the documents Statistics.
+     * @return the pane containing the documents Statistics.
      */
     @Override
     public VBox getStatsContainer() {
@@ -108,7 +108,7 @@ public class DocController implements Initializable, Statistical, Loader {
     }
 
     /**
-     *Function to run to obtain the loading pane.
+     * Function to run to obtain the loading pane.
      * @return  the loading pane.
      */
     @Override
@@ -117,8 +117,8 @@ public class DocController implements Initializable, Statistical, Loader {
     }
 
     /**
-     *Function to run to obtain the Pane containg the document content.
-     * @return  the Pane containg the document content.
+     * Function to run to obtain the Pane containing the document content.
+     * @return the Pane containing the document content.
      */
     @Override
     public Pane getContentPane() {

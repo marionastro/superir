@@ -31,7 +31,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- *Controller used for interractions and updates on the QueryInsertView.
+ * Controller used for interactions and updates on the QueryInsertView.
  * @author Gruppo5
  */
 public class QueryInsertController implements Initializable, Loader {
@@ -134,7 +134,7 @@ public class QueryInsertController implements Initializable, Loader {
     }
 
     /**
-     * Fuction to go back to the previous view (FolderSelectionView).
+     * Function to go back to the previous view (FolderSelectionView).
      * @param event 
      */
     @FXML private void back(ActionEvent event) {
@@ -142,7 +142,7 @@ public class QueryInsertController implements Initializable, Loader {
     }
 
     /**
-     * fuction to add a new txt file and use its content as stopwords for the algorithm.
+     * function to add a new txt file and use its content as stopwords for the algorithm.
      * @param event 
      */
     @FXML private void addStopWordsFile(ActionEvent event) {
@@ -160,7 +160,7 @@ public class QueryInsertController implements Initializable, Loader {
     }
 
     /**
-     *Function to run to obtain the loading pane.
+     * Function to run to obtain the loading pane.
      * @return  the loading pane.
      */
     @Override
@@ -169,7 +169,7 @@ public class QueryInsertController implements Initializable, Loader {
     }
 
     /**
-     *Function to run to obtain the content pane.
+     * Function to run to obtain the content pane.
      * @return  the content pane.
      */
     @Override

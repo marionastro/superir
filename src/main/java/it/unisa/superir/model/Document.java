@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- *This Class rappresents a text file and its content.
+ * This Class represents a text file and its content.
  * 
  * @author Gruppo5
  */
@@ -23,9 +23,9 @@ public class Document {
     private final Vocabulary vocabulary;
 
     /**
-     *Costructor given the file.
+     * Constructor given the file.
      * 
-     * @param file          the file to rappresent.
+     * @param file          the file to represent.
      * @throws IOException  throws an IOException if the file is not found.
      */
     public Document(File file) throws IOException {
@@ -48,9 +48,9 @@ public class Document {
     }
 
     /**
-     *costructor given the file name.
+     * Constructor given the file name.
      * 
-     * @param fileName      the name of the file to rappresent.
+     * @param fileName      the name of the file to represent.
      * @throws IOException  throws an IOException if the file is not found.
      */
     public Document(String fileName) throws IOException {
@@ -58,7 +58,7 @@ public class Document {
     }
 
     /**
-     *Function to call to get the document title (first line of file) as a TExt Object.
+     * Function to call to get the document title (first line of file) as a TExt Object.
      * 
      * @return  the title (first line) of the document.
      */
@@ -67,7 +67,7 @@ public class Document {
     }
 
     /**
-     *Function to call to get the document body  as a TExt Object.
+     * Function to call to get the document body as a TExt Object.
      * 
      * @return  the body of the document.
      */
@@ -76,7 +76,7 @@ public class Document {
     }
 
     /**
-     *Function to call to get the document vocabulary (set of words it contains).
+     * Function to call to get the document vocabulary (set of words it contains).
      * 
      * @return  the set of words used in the document.
      */
@@ -94,7 +94,7 @@ public class Document {
     }
 
     /**
-     *Function to call to get the document length (sum of title and body number of charachters).
+     * Function to call to get the document length (sum of title and body number of characters).
      * 
      * @return  the number of words in the title and in the body.
      */
@@ -104,7 +104,7 @@ public class Document {
     }
 
     /**
-     *Function to call to get a mapping between a word in the document and
+     * Function to call to get a mapping between a word in the document and
      * the number of times it is present in it.
      * 
      * @return      a map with words and their score.

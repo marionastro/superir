@@ -8,7 +8,7 @@ import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
- *This class rappresents a generic file containing stopwords.
+ * This class represents a generic file containing stopwords.
  * @author Gruppo5
  */
 public class StopWordsFile {
@@ -16,7 +16,7 @@ public class StopWordsFile {
     private final Vocabulary vocabulary;
 
     /**
-     * Costructor given the file, its content becomes the StopWordsFile vocabulary.
+     * Constructor given the file, its content becomes the StopWordsFile vocabulary.
      * @param file          the file to use as stopwordsfiles.
      * @throws IOException  throws an IOException if the file is not found.
      */
@@ -32,7 +32,7 @@ public class StopWordsFile {
     }
 
     /**
-     *Costructor given the file containing Stop words name.
+     * Constructor given the file containing Stop words name.
      * @param fileName        the name of the file to use as stopwordsfiles.
      * @throws IOException    throws an IOException if the file is not found.
      */
@@ -41,7 +41,7 @@ public class StopWordsFile {
     }
 
     /**
-     *Function to run to obtain the file.
+     * Function to run to obtain the file.
      * @return  the file used as a stopword file.
      */
     public File getFile() {
@@ -49,7 +49,7 @@ public class StopWordsFile {
     }
 
     /**
-     *Function to run to obtain the vocabulary (set of words present in the file).
+     * Function to run to obtain the vocabulary (set of words present in the file).
      * @return  the vocabulary of the stopword file.
      */
     public Vocabulary getVocabulary() {

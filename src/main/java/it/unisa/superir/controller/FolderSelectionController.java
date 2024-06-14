@@ -15,7 +15,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 /**
- *Controller used for interractions and updates on the FolderSelectionView.
+ * Controller used for interactions and updates on the FolderSelectionView.
  * @author Gruppo5
  */
 public class FolderSelectionController implements Initializable {

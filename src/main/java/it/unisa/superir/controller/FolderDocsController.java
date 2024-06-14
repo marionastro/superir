@@ -32,7 +32,7 @@ import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
 /**
- *Controller used for interractions and updates on the FolderDocsView.
+ * Controller used for interactions and updates on the FolderDocsView.
  * @author Gruppo5
  */
 public class FolderDocsController implements Initializable, Statistical, Loader {
@@ -171,7 +171,7 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
     }
 
     /**
-     * Fuction to go back to the previous view (QueryInsertView).
+     * Function to go back to the previous view (QueryInsertView).
      * @param event 
      */
     @FXML
@@ -180,8 +180,8 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
     }
 
     /**
-     *Function to run to obtain the Pane containing the folder statistics.
-     * @return      the Pane containing the folder statistics.
+     * Function to run to obtain the Pane containing the folder statistics.
+     * @return the Pane containing the folder statistics.
      */
     @Override
     public VBox getStatsContainer() {
@@ -189,8 +189,8 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
     }
 
     /**
-     *Function to run to obtain the loading pane.
-     * @return      the loading pane.
+     * Function to run to obtain the loading pane.
+     * @return the loading pane.
      */
     @Override
     public Pane getLoadingPane() {
@@ -198,8 +198,8 @@ public class FolderDocsController implements Initializable, Statistical, Loader 
     }
 
     /**
-     *Function to run to obtain the list of all the documents scores.
-     * @return  the list of all the documents scores.
+     * Function to run to obtain the list of all the documents scores.
+     * @return the list of all the documents scores.
      */
     @Override
     public Pane getContentPane() {

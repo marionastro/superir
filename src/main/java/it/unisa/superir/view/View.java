@@ -14,13 +14,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
- * Abstract interface that rappresents a generic view, providing fundamental methods.
+ * Abstract interface that represents a generic view, providing fundamental methods.
  * @author Gruppo5
  */
 public abstract class View {
 
     /**
-     * Function to call when you need to substitude a scene with one that has
+     * Function to call when you need to substitute a scene with one that has
      * this type of view.
      */
     public void show() {
@@ -45,7 +45,7 @@ public abstract class View {
     }
 
     /**
-     * Funtion to run to obtaint the View FXML source.
+     * Function to run to obtain the View FXML source.
      * @return      the View source.
      */
     public abstract URL getFXML();

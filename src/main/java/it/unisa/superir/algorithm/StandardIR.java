@@ -3,14 +3,14 @@ package it.unisa.superir.algorithm;
 import it.unisa.superir.model.Vocabulary;
 
 /**
- *Standard IR algorithm the score is only affected by word frequency in the document.
+ * Standard IR algorithm the score is only affected by word frequency in the document.
  * 
  * @author Gruppo5
  */
 public class StandardIR implements IRAlgorithm {
 
     /**
-     *Funtion to run to calculate the IR score of a word given a set of words.
+     * Function to run to calculate the IR score of a word given a set of words.
      * 
      * @param string        string to calculate the scores of.
      * @param vocabulary    set of words used to calculate the scores of the string.
